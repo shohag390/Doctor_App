@@ -1,11 +1,9 @@
 import React from "react";
+import "./App.css";
+import Layout from "./layout/Layout";
 
 const App = () => {
-  return (
-    <div>
-      <h1 className="text-[red] uppercase">Hello World</h1>
-    </div>
-  );
+  return <Layout />;
 };
 
 export default App;

@@ -249,6 +249,20 @@ const Home = () => {
         </div>
       </section>
       {/* --------FAQ SECTION CLOSE--------- */}
+
+      {/* --------TESTIMONIAL--------  */}
+      <section>
+        <div className="container">
+          <div className="xl:w-[470px] mx-auto">
+            <h2 className="text-center heading">What our patient say</h2>
+            <p className="text-center text_para">
+              World-class care for everyone . Our health System offers unmatched
+              , expert health care.
+            </p>
+          </div>
+        </div>
+      </section>
+      {/* --------TESTIMONIAL CLOSE--------  */}
     </>
   );
 };

@@ -15,6 +15,7 @@ import avatarIcon from "../assets/images/avatar-icon.png";
 import DoctorList from "../components/Doctor/DoctorList";
 import faqImg from "../assets/images/faq-img.png";
 import FaqList from "../components/Faq/FaqList";
+import Testimonial from "../components/Testimonial/Testimonial";
 
 const serviceArr = [
   {
@@ -260,6 +261,7 @@ const Home = () => {
               , expert health care.
             </p>
           </div>
+          <Testimonial />
         </div>
       </section>
       {/* --------TESTIMONIAL CLOSE--------  */}

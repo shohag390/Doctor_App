@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import uploadImageToCloudinary from "../../utils/uploadCloudinary";
 import { BASE_URL, token } from "../../config";
@@ -20,6 +20,26 @@ const Profile = ({ doctorData }) => {
     about: "",
     photo: null,
   });
+
+  console.log(formData);
+
+  useEffect(() => {
+    setFormData({
+      name: doctorData?.name,
+      email: doctorData?.email,
+      password: doctorData?.password,
+      phone: doctorData?.phone,
+      bio: doctorData?.bio,
+      gender: doctorData?.gender,
+      specialization: doctorData?.specialization,
+      ticketPrice: doctorData?.ticketPrice,
+      qualifications: doctorData?.qualifications,
+      experiences: doctorData?.experiences,
+      timeSlots: doctorData?.timeSlots,
+      about: doctorData?.about,
+      photo: doctorData?.photo,
+    });
+  }, [doctorData]);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -54,14 +74,6 @@ const Profile = ({ doctorData }) => {
     }
   };
 
-  //reuseable function for adding
-  const addItem = (key, item) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [key]: [...prevFormData[key], item],
-    }));
-  };
-
   //reuseable input change function
   const handleReusableInputChangeFunc = (key, index, event) => {
     const { name, value } = event.target;
@@ -85,6 +97,7 @@ const Profile = ({ doctorData }) => {
     }));
   };
 
+  // AddQualification Hear
   const addQualification = (e) => {
     e.preventDefault();
 
@@ -96,9 +109,18 @@ const Profile = ({ doctorData }) => {
     });
   };
 
+  //reuseable function for adding
+  const addItem = (key, item) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [key]: [...prevFormData[key], item],
+    }));
+  };
+
   const handleQualificationChange = (event, index) => {
     handleReusableInputChangeFunc("qualifications", index, event);
   };
+  // AddQualification Close
 
   const deletedQualification = (e, index) => {
     e.preventDefault();

@@ -2,10 +2,11 @@ import { useState } from "react";
 import signupImg from "../assets/images/signup.gif";
 
 import { Link, useNavigate } from "react-router-dom";
-import uploadImageToCloudinary from "../utils/uploadCloudinary";
+
 import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
+import uploadImageToCloudinary from "../utils/uploadCloudinary";
 
 const Signup = () => {
   const [selectFile, setSelectFile] = useState(null);

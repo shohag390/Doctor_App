@@ -7,6 +7,7 @@ import { MdError } from "react-icons/md";
 import starIcone from "../../assets/images/Star.png";
 import DoctorAbout from "../../Pages/Doctors/DoctorAbout.jsx";
 import Profile from "./Profile.jsx";
+import Appointment from "./Appointment.jsx";
 
 const Dashboard = () => {
   const { data, loading, error } = useGetProfile(
@@ -42,7 +43,7 @@ const Dashboard = () => {
                     <div className="flex items-center gap-4 mb-10">
                       <figure className="max-w-[200px] max-h-[200px]">
                         <img
-                          className="w-full h-full"
+                          className="w-[250px] h-[200px]"
                           src={data?.photo}
                           alt=""
                         />
@@ -76,8 +77,10 @@ const Dashboard = () => {
                     />
                   </div>
                 )}
-                {tab === "appointements" && <div> Appointements</div>}
-                {tab === "setting" && <Profile />}
+                {tab === "appointements" && (
+                  <Appointment appointment={data?.appointment} />
+                )}
+                {tab === "setting" && <Profile doctorData={data} />}
               </div>
             </div>
           </div>

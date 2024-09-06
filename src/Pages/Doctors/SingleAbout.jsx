@@ -1,30 +1,26 @@
 import React from "react";
 import { formatDate } from "../../utils/formatDate";
-import { BASE_URL } from "../../config";
-import useGetProfile from "../../hooks/useFetchData";
-import Loading from "../../components/Loader/Loading";
 
-const DoctorAbout = () => {
-  const { data, loading, error } = useGetProfile(
-    `${BASE_URL}/doctors/profile/me`
-  );
+const SingleAbout = ({ doctor }) => {
+  const { name, about, qualifications, experiences } = doctor;
+
   return (
     <div>
       <div>
         <h3 className="text-[20px] leading-[30px] text-headingColor font-semibold flex items-center gap-2">
           About of
           <span className="text-irisBlueColor font-bold text-[24px] leading-9">
-            {data?.name}
+            {name}
           </span>
         </h3>
-        <p className="textr_para">{data?.about}</p>
+        <p className="textr_para">{about}</p>
       </div>
       <div className="mt-12">
         <h3 className="text-[20px] leading-[30px] text-headingColor font-semibold">
           Education
         </h3>
         <ul className="pt-4 md:p-5">
-          {data?.qualifications?.map((item, index) => (
+          {qualifications?.map((item, index) => (
             <li
               key={index}
               className="flex flex-col sm:flex-row sm:justify-between sm:items-end md:gap-5 mb-[30px]"
@@ -52,7 +48,7 @@ const DoctorAbout = () => {
         </h3>
 
         <ul className="grid sm:grid-cols-2 gap-[30px] pt-4 md:p-5">
-          {data?.experiences?.map((item, index) => (
+          {experiences?.map((item, index) => (
             <li key={index} className="p-4 bg-[#fff9ea] rounded">
               <span className="text-yellowColor text-[15px] leading-6 font-semibold">
                 {formatDate(item?.startingDate)} -{" "}
@@ -72,4 +68,4 @@ const DoctorAbout = () => {
   );
 };
 
-export default DoctorAbout;
+export default SingleAbout;

@@ -29,26 +29,6 @@ const Header = () => {
   const menuRef = useRef(null);
   const { user, role, token } = useContext(authContext);
 
-  console.log(user, "user profile");
-
-  // const handelStickyHeader = () => {
-  //   window.addEventListener("scroll", () => {
-  //     if (
-  //       document.body.scrollTop > 80 ||
-  //       document.documentElement.scrollTop > 80
-  //     ) {
-  //       headerRef.current.classList.add("sticky_header");
-  //     } else {
-  //       headerRef.current.classList.remove("sticky_header");
-  //     }
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   handelStickyHeader();
-  //   return () => window.removeEventListener("scroll", handelStickyHeader);
-  // });
-
   const toggleMenu = () => menuRef.current.classList.toggle("show_menu");
 
   return (

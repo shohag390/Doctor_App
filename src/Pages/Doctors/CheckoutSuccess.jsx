@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const CheckoutSuccess = () => {
   return (
-    <div className="bg-[#E6F1FF] md:h-[90vh] md:px-0 px-[20px] md:flex md:items-center md:justify-center">
+    <div className="bg-[#E6F1FF] md:h-[90vh] md:py-0 py-[25px] md:flex md:items-center md:justify-center">
       <div className="card p-[30px] md:w-[40%] flex flex-col items-center ">
         <IoMdCloudDone className="text-[#002570] text-[50px]" />
         <div className="text-center">

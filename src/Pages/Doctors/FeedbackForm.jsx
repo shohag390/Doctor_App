@@ -48,7 +48,7 @@ const FeedbackForm = () => {
   return (
     <form onSubmit={handleSubmitReview}>
       <div>
-        <h3 className="text-headingColor text-[16px] leading-6 font-semibold mb-4">
+        <h3 className="md:text-[17px] md:font-semibold text-[gray] md:pb-[20px] pb-[10px]">
           How would you rate the overall experience?
         </h3>
 
@@ -81,7 +81,7 @@ const FeedbackForm = () => {
         </div>
       </div>
       <div className="mt-[30px]">
-        <h3 className="text-headingColor text-[16px] leading-6 font-semibold mb-4">
+        <h3 className="md:text-[17px] md:font-semibold text-[gray] md:pb-[20px] pb-[10px]">
           Share your feedback or suggestions
         </h3>
         <textarea
@@ -91,7 +91,7 @@ const FeedbackForm = () => {
           onChange={(e) => setReviewText(e.target.value)}
         ></textarea>
       </div>
-      <button type="submit" className="btn">
+      <button type="submit" className="btnOne py-[10px] px-[30px] mt-[20px]">
         {loading ? <HashLoader size={20} color="#fff" /> : `Submit Feedback`}
       </button>
     </form>

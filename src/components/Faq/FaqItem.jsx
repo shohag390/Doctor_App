@@ -10,22 +10,24 @@ const FaqItem = ({ item }) => {
   };
 
   return (
-    <div className="p-3 lg:p-5 rounded-[12px] border border-solid border-[#d9dce2] mb-5 cursor-pointer">
+    <div className="py-[8px] border-[1px] border-[white] card rounded-[30px] px-[25px] mb-[10px] cursor-pointer">
       <div
         className="flex items-center justify-between gap-5"
         onClick={toggleAccording}
       >
-        <h4 className="">{question}</h4>
+        <h4 className="md:text-[17px] md:font-semibold text-[gray]">
+          {question}
+        </h4>
         <div
           className={`${
-            isOpen && "bg-primaryColor text-white border-none"
-          } w-7 h-7 lg:w-8 lg:h-8 border border-solid border-[#141f21] rounded flex items-center justify-center`}
+            isOpen && "bg-[#007EFF] border-none text-[white]"
+          } w-7 h-7 lg:w-8 lg:h-8 border-[1px] border-[#007EFF] rounded flex items-center text-[#007EFF] justify-center`}
         >
           {isOpen ? <AiOutlineMinus /> : <AiOutlinePlus />}
         </div>
       </div>
       {isOpen && (
-        <div className="text-[14px] leading-6 lg:text-[16px] lg:leading-7 font-[400] text-textColor">
+        <div className="text-[gray]">
           <p>{content}</p>
         </div>
       )}

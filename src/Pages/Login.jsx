@@ -4,6 +4,7 @@ import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 import { authContext } from "../context/AuthContext.jsx";
 import HashLoader from "react-spinners/HashLoader";
+import image from "../assets/image/login.png";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -44,8 +45,6 @@ const Login = () => {
         },
       });
 
-      console.log(result, "login data");
-
       setLoading(false);
       toast.success(result.message);
       navigate("/home");
@@ -56,53 +55,55 @@ const Login = () => {
   };
 
   return (
-    <section className="px-5 lg:px-0">
-      <div className="w-full max-w-[570px] mx-auto rounded-lg shadow-md md:p-10">
-        <h3 className="text-headingColor text-[22px] leading-9 font-bold mb-10">
-          Hello! <span className="text-primaryColor">Welcome</span> Back
-        </h3>
-        <form onSubmit={submitHandler} className="py-4 md:py-0">
-          <div className="mb-5">
-            <input
-              type="email"
-              placeholder="Enter Your Email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor"
-            />
-          </div>
-          <div className="mb-5">
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor"
-            />
-          </div>
+    <section className="md:px-[80px] px-[20px] w-full md:h-[90vh] flex items-center justify-center py-[25px] bg-[#E6F1FF]">
+      <div className="md:w-[80%] w-full md:h-[75vh] md:flex card">
+        <div className="w-[50%] md:block hidden">
+          <img className="rounded-l-[28px] h-full" src={image} alt="" />
+        </div>
+        <div className="md:w-[50%] md:flex items-center justify-center">
+          <form
+            onSubmit={submitHandler}
+            className="w-full p-[20px] md:px-[60px]"
+          >
+            <div className="mb-5">
+              <input
+                type="email"
+                placeholder="Enter Your Email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+              />
+            </div>
+            <div className="mb-5">
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                required
+                className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+              />
+            </div>
 
-          <div className="mt-7">
-            <button
-              type="submit"
-              className="w-full text-white bg-primaryColor text-[18px] leading-[30px] rounded-lg px-4 py-3"
-            >
-              {loading ? <HashLoader size={25} color="#fff" /> : "Login"}
-            </button>
-          </div>
-          <p className="mt-5 text-center text-textColor">
-            Don&apos;t have an account ? {""}
-            <Link
-              to={"/register"}
-              className="ml-1 font-medium text-primaryColor"
-            >
-              Register
-            </Link>
-          </p>
-        </form>
+            <div className="mt-7">
+              <button type="submit" className="btnOne py-[10px] w-full">
+                {loading ? <HashLoader size={25} color="#fff" /> : "Login"}
+              </button>
+            </div>
+            <p className="mt-5 text-center md:text-[17px] md:font-semibold text-[gray]">
+              Don&apos;t have an account ? {""}
+              <Link
+                to={"/register"}
+                className="ml-1 font-medium text-[#007EFF]"
+              >
+                Register
+              </Link>
+            </p>
+          </form>
+        </div>
       </div>
     </section>
   );

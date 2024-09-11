@@ -5,22 +5,19 @@ import { Link } from "react-router-dom";
 const ServicesCard = ({ item, index }) => {
   const { name, desc, bgColor, textColor } = item;
   return (
-    <div className="py-[30px] px-3 lg:px-5">
-      <h2 className="text-[26px] leading-9 text-headingColor font-[700]">
-        {name}
-      </h2>
-      <p className="text-[16px] leading-7 font-[400] text-headingColor mt-4">
+    <div className="border-2 border-[white] card p-[20px]">
+      <h2 className="md:text-[22px] text-[#002570] font-bold">{name}</h2>
+      <p className="md:text-[17px] capitalize text-[gray] font-semibold pt-[4px]">
         {desc}
       </p>
-      <div className="flex items-center justify-between mt-[30px]">
-        <Link
-          to={"/doctor"}
-          className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] flex items-center justify-center group hover:bg-primaryColor hover:border-none hover:text-white"
-        >
-          <BsArrowRight />
-        </Link>
+      <div className="flex items-center justify-between mt-[20px]">
+        <button className="h-[45px] w-[45px] flex items-center justify-center rounded-full border-[2px] hover:text-[white] border-[#002570] text-[#002570] hover:bg-[#002570]">
+          <Link to={"/doctor"}>
+            <BsArrowRight />
+          </Link>
+        </button>
         <span
-          className="w-[44px] h-[44px] flex items-center justify-center text-[18px] leading-[30px] font-[600]"
+          className="w-[44px] h-[44px] flex items-center justify-center text-[18px] leading-[30px] font-[600] service_count"
           style={{
             background: `${bgColor}`,
             color: `${textColor}`,

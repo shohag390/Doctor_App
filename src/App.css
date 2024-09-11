@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -13,14 +14,14 @@ body {
 .swiper-pagination-bullet {
   width: 12px !important;
   height: 12px !important;
-  border: 1px solid #181a1e !important;
+  border: 1px solid #002570 !important;
   opacity: 100% !important;
   background: #fff !important;
   border-radius: 10px !important;
 }
 
 .swiper-pagination-bullet-active {
-  background: #0067ff !important;
+  background: #007eff !important;
   border: none !important;
 }
 
@@ -28,10 +29,6 @@ body {
   padding-bottom: 70px !important;
 }
 
-.swiper-slide.swiper-slide-next {
-  background: #0067ff;
-  border-radius: 12px;
-}
 .swiper-slide.swiper-slide-next h4,
 .swiper-slide.swiper-slide-next p {
   color: white;
@@ -41,41 +38,88 @@ body {
   top: 90% !important;
 }
 
-footer {
-  background-image: url(./assets//images/hero-bg.png);
-  border-top: 1px solid rgb(241, 235, 235);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.space_letter {
+  letter-spacing: 2px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 2px solid #007eff;
 }
 
-@media only screen and (max-width: 768px) {
-  .navigation {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    background-color: #00000084;
-    display: none;
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e6f1ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #002570;
+}
+
+.left_scroll {
+  animation: left linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+.right_scroll {
+  animation: right linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+@keyframes left {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes right {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .left_scroll {
+    animation: left linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+  .right_scroll {
+    animation: right linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
   }
 
-  .menu {
-    width: 60%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: #fff;
-    z-index: 200;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    line-height: 30px;
+  @keyframes left {
+    from {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+    }
   }
-
-  .show_menu {
-    display: block;
+  @keyframes right {
+    from {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+    }
   }
 }

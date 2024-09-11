@@ -26,6 +26,7 @@ const ProfileSetting = ({ user }) => {
     setFormData({
       name: user.name,
       email: user.email,
+      password: user.password,
       photo: user.photo,
       gender: user.gender,
       bloodType: user.bloodType,
@@ -74,48 +75,48 @@ const ProfileSetting = ({ user }) => {
   };
 
   return (
-    <div className="mt-10">
+    <div className="mt-[20px]">
       <form onSubmit={submitHandler}>
-        <div className="mb-5">
+        <div className="mb-[15px]">
           <input
             type="text"
             placeholder="Full Name"
             name="name"
-            value={formData.name}
+            value={formData.name || ""}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor"
+            className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
           />
         </div>
-        <div className="mb-5">
+        <div className="mb-[15px]">
           <input
             type="email"
             placeholder="Enter your email"
             name="email"
-            value={formData.email}
+            value={formData.email || ""}
             onChange={handleInputChange}
             aria-readonly
             readOnly
-            className="w-full px-4 py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor"
+            className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
           />
         </div>
-        <div className="mb-5">
+        <div className="mb-[15px]">
           <input
             type="password"
             placeholder="Password"
             name="password"
-            value={formData.password}
+            value={formData.password || ""}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor"
+            className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
           />
         </div>
-        <div className="mb-5">
+        <div className="mb-[15px]">
           <input
             type="text"
             placeholder="Blood Type"
             name="bloodType"
-            value={formData.bloodType}
+            value={formData.bloodType || ""}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 border-b border-solid border-[#0066ff61] focus:outline-none focus:border-b-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor"
+            className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
           />
         </div>
 
@@ -124,9 +125,9 @@ const ProfileSetting = ({ user }) => {
             Gender:
             <select
               name="gender"
-              value={formData.gender}
+              value={formData.gender || ""}
               onChange={handleInputChange}
-              className="text-textColor font-semibold text-[15px] leading-7 px-4 py3 focus:outline-none"
+              className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
             >
               <option value="">Select</option>
               <option value="male">Male</option>
@@ -140,7 +141,7 @@ const ProfileSetting = ({ user }) => {
           {formData.photo && (
             <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center">
               <img
-                src={formData.photo}
+                src={formData.photo || null}
                 className="w-full h-full rounded-full"
                 alt="image"
               />
@@ -168,9 +169,9 @@ const ProfileSetting = ({ user }) => {
           <button
             disabled={loading && true}
             type="submit"
-            className="w-full text-white bg-primaryColor text-[18px] leading-[30px] rounded-lg px-4 py-3"
+            className="btnOne w-full py-[10px]"
           >
-            {loading ? <HashLoader size={25} color="#ffffff" /> : "Update"}
+            {loading ? <HashLoader size={18} color="#ffffff" /> : "Update"}
           </button>
         </div>
       </form>

@@ -1,4 +1,3 @@
-import { BiMenu } from "react-icons/bi";
 import { authContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -13,53 +12,42 @@ const Tabs = ({ tab, setTab }) => {
   };
 
   return (
-    <div>
-      <span className="lg:hidden">
-        <BiMenu />
-      </span>
-      <div className="hidden lg:flex flex-col p-[30px] bg-white shadow-panelShadow items-center h-max rounded-md">
-        <button
-          onClick={() => setTab("overview")}
-          className={`${
-            tab === "overview"
-              ? "bg-indigo-100 text-primaryColor"
-              : "bg-transparent text-headingColor"
-          } w-full btn mt-0 rounded-md`}
-        >
-          Overview
-        </button>
-        <button
-          onClick={() => setTab("appointements")}
-          className={`${
-            tab === "appointements"
-              ? "bg-indigo-100 text-primaryColor"
-              : "bg-transparent text-headingColor"
-          } w-full btn mt-0 rounded-md`}
-        >
-          Appointements
-        </button>
-        <button
-          onClick={() => setTab("setting")}
-          className={`${
-            tab === "setting"
-              ? "bg-indigo-100 text-primaryColor"
-              : "bg-transparent text-headingColor"
-          } w-full btn mt-0 rounded-md`}
-        >
-          Profile
-        </button>
-        <div className="mt-[100px] w-full">
-          <button
-            onClick={handleLogout}
-            className="w-full bg-[#181A1E] p-3 text-[16px] leading-7 rounded-md text-white"
-          >
-            Logout
-          </button>
-          <button className="w-full bg-red-600 mt-4 p-3 text-[16px] leading-7 rounded-md text-white">
-            Delete Account
-          </button>
-        </div>
-      </div>
+    <div className="flex flex-col justify-center w-full gap-[10px]">
+      <button
+        onClick={() => setTab("overview")}
+        className={`${
+          tab === "overview"
+            ? "bg-[#002570] space_letter rounded-[30px] text-white"
+            : "btnOne"
+        } w-full py-[10px] `}
+      >
+        Overview
+      </button>
+      <button
+        onClick={() => setTab("appointements")}
+        className={`${
+          tab === "appointements"
+            ? "bg-[#002570] space_letter rounded-[30px] text-white"
+            : "btnOne"
+        } w-full py-[10px]`}
+      >
+        Appointements
+      </button>
+      <button
+        onClick={() => setTab("setting")}
+        className={`${
+          tab === "setting"
+            ? "bg-[#002570] space_letter rounded-[30px] text-white"
+            : "btnOne"
+        } w-full py-[10px]`}
+      >
+        Profile
+      </button>
+
+      <button onClick={handleLogout} className="w-full btnOne py-[10px]">
+        Logout
+      </button>
+      <button className="w-full btnOne py-[10px]">Delete</button>
     </div>
   );
 };

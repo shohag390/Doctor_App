@@ -31,51 +31,48 @@ const Doctor = () => {
 
   return (
     <>
-      <section className="bg-[#fff9ea]">
-        <div className="container text-center">
-          <h2 className="heading">Find a Doctor</h2>
-          <div className="max-w-[570px] mt-[30px] mx-auto bg-[#0066ff2c] rounded-md flex items-center justify-between">
+      <section className="bg-[#002570] md:h-[35vh] flex md:py-0 py-[25px] w-full justify-center items-center">
+        <div className="flex flex-col items-center justify-center">
+          <h4 className="md:text-[35px] text-[20px] text-center font-bold text-[white] md:pb-[20px] pb-[10px]">
+            Find a Doctor
+          </h4>
+          <div className="flex items-center md:h-[55px] h-[40px] md:w-[700px] w-[320px] relative">
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               type="search"
               placeholder="Search Doctor by name or specification"
-              className="w-full py-4 pl-4 pr-2 bg-transparent focus:outline-none placeholder:text-textColor"
+              className=" md:w-full md:px-[30px] px-[20px] absolute top-0 left-0 right-0 h-full w-full rounded-[30px] focus:outline-none text-[gray] md:text-[17px] font-semibold"
             />
-            <button
-              onClick={handleSearch}
-              className="mt-0 btn rounded-r-md rounded-l-[0px] border-[2px] border-primaryColor"
-            >
-              Search
-            </button>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className="container">
-          {loading && <Loading />}
-          {error && <Error />}
-          {!loading && !error && (
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-3">
-              {doctors.map((doctor) => (
-                <DoctorCard key={doctor._id} doctor={doctor} />
-              ))}
+            <div className="absolute right-[3px]">
+              <button
+                onClick={handleSearch}
+                className="md:w-[200px] w-[120px] md:h-[50px] h-[35px] btnTwo"
+              >
+                Search
+              </button>
             </div>
-          )}
+          </div>
         </div>
       </section>
-
-      <section>
-        <div className="container">
-          <div className="xl:w-[470px] mx-auto">
-            <h2 className="text-center heading">What our patient say</h2>
-            <p className="text-center text_para">
-              World-class care for everyone . Our health System offers unmatched
-              , expert health care.
-            </p>
+      <section className="bg-[#E6F1FF]">
+        {loading && <Loading />}
+        {error && <Error />}
+        {!loading && !error && (
+          <div className="grid grid-cols-1 md:grid-cols-4 md:px-[80px] md:pt-[55px] pt-[40px] md:pb-[50px] pb-[25px] px-[20px] md:gap-[40px] gap-[20px]">
+            {doctors.map((doctor) => (
+              <DoctorCard key={doctor._id} doctor={doctor} />
+            ))}
           </div>
-          <Testimonial />
+        )}
+      </section>
+      <section className="bg-[#E6F1FF] bg_tast md:px-[80px] px-[20px] md:py-[50px] py-[25px]">
+        <div className="md:px-[400px] px-[60px]">
+          <h4 className="md:text-[40px] text-[25px] md:leading-[45px] leading-[30px] text-center font-bold text-[#002570]">
+            What our patient say
+          </h4>
         </div>
+        <Testimonial />
       </section>
     </>
   );

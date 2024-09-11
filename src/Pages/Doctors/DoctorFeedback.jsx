@@ -14,30 +14,30 @@ const DoctorFeedback = ({ reviews, totalRating }) => {
         </h4>
 
         {reviews?.map((review, index) => (
-          <div key={index} className="flex justify-between gap-10 mb-[30px]">
-            <div className="flex w-full gap-[10px]">
-              <figure className="h-[50px] w-[10%] rounded-full">
+          <div key={index} className="flex justify-between mb-[30px]">
+            <div className="flex w-full">
+              <figure className="md:w-[10%] w-[20%] rounded-full">
                 <img
-                  className="h-[50px] w-[50px] rounded-full"
+                  className="md:h-[50px] md:w-[50px] h-[40px] w-[40px] rounded-full"
                   src={review.user?.photo}
                   alt="image"
                 />
               </figure>
 
-              <div className="w-[80%]">
-                <h5 className="text-[16px] leading-6 text-primaryColor font-bold">
+              <div className="md:w-[70%] w-[60%]">
+                <h5 className="text-[16px] leading-6 text-[#007EFF] font-bold">
                   {review.user?.name}
                 </h5>
-                <p className="text-[14px] leading-6 text-textColor">
+                <p className="text-[14px] text-[gray]">
                   {formatDate(review?.createdAt)}
                 </p>
-                <p className="text_para mt-3 font-medium text-[15px]">
+                <p className="md:text-[17px] md:font-semibold text-[gray] pt-[10px]">
                   {review?.reviewText}
                 </p>
               </div>
             </div>
 
-            <div className="flex gap-1 w-[20%]">
+            <div className="flex w-[20%]">
               {[...Array(review?.rating).keys()].map((_, index) => (
                 <AiFillStar key={index} color="#0067ff" />
               ))}
@@ -48,7 +48,10 @@ const DoctorFeedback = ({ reviews, totalRating }) => {
 
       {!showFeedback && (
         <div className="text-center">
-          <button onClick={() => setShowFeedback(true)} className="btn">
+          <button
+            onClick={() => setShowFeedback(true)}
+            className="btnOne py-[10px] px-[30px]"
+          >
             Give Feedback
           </button>
         </div>

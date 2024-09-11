@@ -2,62 +2,121 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@layer base {
-  section {
-    @apply py-[75px];
-  }
+.btnOne {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 2px solid #007eff;
+  border-radius: 30px;
+  position: relative;
+  color: white;
+  background-color: #007eff;
+  transition: 0.3s ease all;
+  z-index: 1;
 }
 
-@layer components {
-  .container {
-    @apply max-w-full w-[1440px] px-5 mx-auto;
-  }
-
-  .btn {
-    @apply bg-primaryColor py-[15px] px-[35px] rounded-[50px] text-[white] font-[600] mt-[38px];
-  }
-
-  .heading {
-    @apply text-[44px] leading-[54px] font-[700] text-headingColor;
-  }
-
-  .header {
-    @apply bg-[url('./assets/images/mask.png')] bg-no-repeat bg-center bg-cover w-full h-[10vh];
-  }
-
-  .text_para {
-    @apply text-[18px] leading-[30px] font-[400] text-textColor mt-[18px];
-  }
-
-  .hero_section {
-    @apply bg-[url('./assets/images/hero-bg.png')] bg-no-repeat bg-center bg-cover;
-  }
-
-  .form_label {
-    @apply text-textColor font-semibold text-[16px] mb-2;
-  }
-
-  .form_input {
-    @apply w-full px-4 py-3 border border-solid border-[#0066ff61] focus:outline-none focus:border-primaryColor text-[16px] leading-7 text-headingColor placeholder:text-textColor rounded-md;
-  }
+.btnOne::before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: "";
+  background-color: #002570;
+  z-index: -1;
+}
+.btnOne:hover::before,
+.btnOne:focus::before {
+  transition: 0.5s all ease;
+  left: 0;
+  border-radius: 30px;
+  right: 0;
+  opacity: 1;
 }
 
-@media only screen and(max-width:1024px) {
-  .container {
-    @apply w-full;
-  }
-
-  section {
-    @apply py-[35px];
-  }
+.btnOne:active {
+  transform: scale(0.9);
 }
 
-@media only screen and(max-width:1024px) {
-  .heading {
-    @apply text-[26px] leading-[36px];
-  }
+.btnTwo {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 2px solid #002570;
+  border-radius: 30px;
+  position: relative;
+  color: white;
+  background-color: #002570;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
 
-  .text_para {
-    @apply text-[16px] leading-7 mt-3;
-  }
+.btnTwo::before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: "";
+  background-color: #007eff;
+  z-index: -1;
+}
+
+.btnTwo:hover::before,
+.btnTwo:focus::before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  border-radius: 30px;
+  opacity: 1;
+}
+
+.btnTwo:active {
+  transform: scale(0.9);
+}
+
+.banner {
+  background-image: url(./assets/image/hero-bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.client_happy {
+  background-image: url(./assets/image/counter-bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card {
+  border: 2px solid white;
+  border-radius: 30px;
+  box-shadow: 0px 0px 4px gray;
+}
+
+.card_btn {
+  background-image: linear-gradient(to top, #007eff, #0080ff2e, #1a7ada32);
+}
+
+.bg_tast {
+  background-image: url(./assets/image/crcle-bg.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.contact_bg {
+  background-image: url(./assets/image/appoinment.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card_scroll {
+  overflow-y: scroll;
 }

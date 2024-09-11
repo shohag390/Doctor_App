@@ -3,17 +3,18 @@ import { AiOutlineDelete } from "react-icons/ai";
 import uploadImageToCloudinary from "../../utils/uploadCloudinary";
 import { BASE_URL, token } from "../../config";
 import { toast } from "react-toastify";
+import HashLoader from "react-spinners/HashLoader";
 
 const Profile = ({ doctorData }) => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    password: "",
     phone: "",
     bio: "",
     gender: "",
     specialization: "",
-    ticketPrice: 0,
+    ticketPrice: "",
     qualifications: [],
     experiences: [],
     timeSlots: [],
@@ -21,13 +22,10 @@ const Profile = ({ doctorData }) => {
     photo: null,
   });
 
-  console.log(formData);
-
   useEffect(() => {
     setFormData({
       name: doctorData?.name,
       email: doctorData?.email,
-      password: doctorData?.password,
       phone: doctorData?.phone,
       bio: doctorData?.bio,
       gender: doctorData?.gender,
@@ -52,6 +50,7 @@ const Profile = ({ doctorData }) => {
   };
   const updateProfileHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await fetch(`${BASE_URL}/doctors/${doctorData._id}`, {
         method: "PUT",
@@ -67,10 +66,11 @@ const Profile = ({ doctorData }) => {
       if (!res.ok) {
         throw Error(result.message);
       }
-
+      setLoading(false);
       toast.success(result.message);
     } catch (error) {
       toast.error(err.message);
+      setLoading(false);
     }
   };
 
@@ -165,68 +165,78 @@ const Profile = ({ doctorData }) => {
 
   return (
     <div>
-      <h2 className="text-headingColor font-bold text-[24px] leading-9 mb-10">
+      <h2 className="text-[30px] font-bold text-[#002570] pb-[10px]">
         Profile Information
       </h2>
 
       <form onSubmit={updateProfileHandler}>
         <div className="mb-5">
-          <p className="form_label">Name*</p>
+          <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+            Name*
+          </p>
           <input
             type="text"
             name="name"
-            value={formData.name}
+            value={formData.name || ""}
             onChange={handleInputChange}
             placeholder="Full Name"
-            className="form_input"
+            className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
           />
         </div>
         <div className="mb-5">
-          <p className="form_label">Email</p>
+          <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+            Email
+          </p>
           <input
             type="email"
             name="email"
-            value={formData.email}
+            value={formData.email || ""}
             onChange={handleInputChange}
             placeholder="Email"
-            className="form_input"
+            className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
             readOnly
             aria-readonly
-            disabled="true"
+            disabled={true}
           />
         </div>
         <div className="mb-5">
-          <p className="form_label">Phone*</p>
+          <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+            Phone*
+          </p>
           <input
             type="number"
             name="phone"
-            value={formData.phone}
+            value={formData.phone || ""}
             onChange={handleInputChange}
             placeholder="Phone Number"
-            className="form_input"
+            className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
           />
         </div>
         <div className="mb-5">
-          <p className="form_label">Bio*</p>
+          <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+            Bio*
+          </p>
           <input
             type="text"
             name="bio"
-            value={formData.bio}
+            value={formData.bio || ""}
             onChange={handleInputChange}
             placeholder="Bio"
-            className="form_input"
+            className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
             maxLength={100}
           />
         </div>
         <div className="mb-5">
           <div className="grid grid-cols-3 gap-5 mb-[30px]">
             <div>
-              <p className="form_lable">Gender*</p>
+              <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                Gender*
+              </p>
               <select
                 name="gender"
                 onChange={handleInputChange}
-                value={formData.gender}
-                className="form_input py-3.5"
+                value={formData.gender || ""}
+                className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
               >
                 <option value="">Select</option>
                 <option value="male">Male</option>
@@ -235,12 +245,14 @@ const Profile = ({ doctorData }) => {
               </select>
             </div>
             <div>
-              <p className="form_lable">Specialization*</p>
+              <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                Specialization*
+              </p>
               <select
                 name="specialization"
                 onChange={handleInputChange}
-                value={formData.specialization}
-                className="form_input py-3.5"
+                value={formData.specialization || ""}
+                className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
               >
                 <option value="">Select</option>
                 <option value="surgeon">Surgeon</option>
@@ -249,65 +261,78 @@ const Profile = ({ doctorData }) => {
               </select>
             </div>
             <div>
-              <p className="form_lable">Ticket Price*</p>
+              <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                Ticket Price*
+              </p>
               <input
                 type="number"
-                placeholder="Ticket Price"
                 name="ticketPrice"
-                value={formData.ticketPrice}
-                className="form_input"
+                value={formData.ticketPrice || ""}
+                onChange={handleInputChange}
+                placeholder="Ticket Price"
+                className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
               />
             </div>
           </div>
         </div>
 
         <div className="mb-5">
-          <p className="pb-2 font-bold form_lable">Qualifications:</p>
+          <p className="pb-2 font-bold text-[#002570] text-[20px]">
+            Qualifications:
+          </p>
           {formData.qualifications?.map((item, index) => (
             <div key={index}>
               <div>
                 <div className="grid grid-cols-2 gap-5">
                   <div>
-                    <p className="form_lable">Starting Date*</p>
+                    <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                      Starting Date*
+                    </p>
                     <input
                       type="date"
                       name="startingDate"
-                      value={item.startingDate}
-                      className="form_input"
+                      value={item.startingDate || ""}
+                      className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
                       onChange={(e) => handleQualificationChange(e, index)}
                     />
                   </div>
                   <div>
-                    <p className="form_lable">Ending Date*</p>
+                    <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                      Ending Date*
+                    </p>
                     <input
                       type="date"
                       name="endingDate"
-                      value={item.endingDate}
-                      className="form_input"
+                      value={item.endingDate || ""}
+                      className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
                       onChange={(e) => handleQualificationChange(e, index)}
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-5 mt-5">
                   <div>
-                    <p className="form_lable">Degree*</p>
+                    <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                      Degree*
+                    </p>
                     <input
                       type="text"
                       name="degree"
-                      value={item.degree}
+                      value={item.degree || ""}
                       placeholder="Degree Name"
-                      className="form_input"
+                      className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
                       onChange={(e) => handleQualificationChange(e, index)}
                     />
                   </div>
                   <div>
-                    <p className="form_lable">University*</p>
+                    <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                      University*
+                    </p>
                     <input
                       type="text"
                       name="university"
-                      value={item.university}
+                      value={item.university || ""}
                       placeholder="university Name"
-                      className="form_input"
+                      className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
                       onChange={(e) => handleQualificationChange(e, index)}
                     />
                   </div>
@@ -330,53 +355,63 @@ const Profile = ({ doctorData }) => {
           </button>
         </div>
         <div className="mb-5">
-          <p className="pb-2 font-bold form_lable">Experiences:</p>
+          <p className="pb-2 font-bold text-[#002570] text-[20px]">
+            Experiences:
+          </p>
           {formData.experiences?.map((item, index) => (
             <div key={index}>
               <div>
                 <div className="grid grid-cols-2 gap-5">
                   <div>
-                    <p className="form_lable">Starting Date*</p>
+                    <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                      Starting Date*
+                    </p>
                     <input
                       type="date"
                       name="startingDate"
-                      value={item.startingDate}
+                      value={item.startingDate || ""}
                       onChange={(e) => handleExperiencesChange(e, index)}
-                      className="form_input"
+                      className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
                     />
                   </div>
                   <div>
-                    <p className="form_lable">Ending Date*</p>
+                    <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                      Ending Date*
+                    </p>
                     <input
                       type="date"
                       name="endingDate"
-                      value={item.endingDate}
+                      value={item.endingDate || ""}
                       onChange={(e) => handleExperiencesChange(e, index)}
-                      className="form_input"
+                      className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-5 mt-5">
                   <div>
-                    <p className="form_lable">Position*</p>
+                    <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                      Position*
+                    </p>
                     <input
                       type="text"
                       name="position"
-                      value={item.position}
+                      value={item.position || ""}
                       onChange={(e) => handleExperiencesChange(e, index)}
                       placeholder="Position"
-                      className="form_input"
+                      className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
                     />
                   </div>
                   <div>
-                    <p className="form_lable">Hospital*</p>
+                    <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                      Hospital*
+                    </p>
                     <input
                       type="text"
                       name="hospital"
-                      value={item.hospital}
+                      value={item.hospital || ""}
                       onChange={(e) => handleExperiencesChange(e, index)}
                       placeholder="Hospital Name"
-                      className="form_input"
+                      className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
                     />
                   </div>
                 </div>
@@ -398,18 +433,22 @@ const Profile = ({ doctorData }) => {
           </button>
         </div>
         <div className="mb-5">
-          <p className="pb-2 font-bold form_lable">Time Slots:</p>
+          <p className="pb-2 font-bold text-[#002570] text-[20px]">
+            Time Slots:
+          </p>
           {formData.timeSlots?.map((item, index) => (
             <div key={index}>
               <div>
                 <div className="grid grid-cols-2 md:grid-cols-4 mb-[30px] gap-5">
                   <div>
-                    <p className="form_lable">Day*</p>
+                    <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                      Day*
+                    </p>
                     <select
                       name="day"
-                      value={item.day}
+                      value={item.day || ""}
                       onChange={(e) => handleTimeSlotChange(e, index)}
-                      className="form_input py-3.5"
+                      className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
                     >
                       <option value="">Select</option>
                       <option value="saturday">Saturday</option>
@@ -422,23 +461,27 @@ const Profile = ({ doctorData }) => {
                     </select>
                   </div>
                   <div>
-                    <p className="form_lable">Starting Time*</p>
+                    <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                      Starting Time*
+                    </p>
                     <input
                       type="time"
                       name="startingTime"
-                      value={item.startingTime}
+                      value={item.startingTime || ""}
                       onChange={(e) => handleTimeSlotChange(e, index)}
-                      className="form_input"
+                      className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
                     />
                   </div>
                   <div>
-                    <p className="form_lable">Ending Time*</p>
+                    <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+                      Ending Time*
+                    </p>
                     <input
                       type="time"
                       name="endingTime"
-                      value={item.endingTime}
+                      value={item.endingTime || ""}
                       onChange={(e) => handleTimeSlotChange(e, index)}
-                      className="form_input"
+                      className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
                     />
                   </div>
                   <div className="flex items-center">
@@ -461,14 +504,16 @@ const Profile = ({ doctorData }) => {
           </button>
         </div>
         <div className="mb-5">
-          <p className="form_lable">About*</p>
+          <p className="md:text-[17px] md:font-semibold text-[gray] pb-[5px]">
+            About*
+          </p>
           <textarea
             name="about"
             rows={5}
-            value={formData.about}
+            value={formData.about || ""}
             placeholder="Write about you"
             onChange={handleInputChange}
-            className="form_input"
+            className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
           ></textarea>
         </div>
 
@@ -476,7 +521,7 @@ const Profile = ({ doctorData }) => {
           {formData.photo && (
             <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center">
               <img
-                src={formData.photo}
+                src={formData.photo || null}
                 className="w-full h-full rounded-full"
                 alt="image"
               />
@@ -501,11 +546,15 @@ const Profile = ({ doctorData }) => {
         </div>
         <div className="mt-7">
           <button
+            disabled={loading && true}
             type="submit"
-            onClick={updateProfileHandler}
-            className="text-white bg-primaryColor text-[18px] leading-[30px] w-full py-3 px-4 rounded-lg"
+            className="btnOne w-full py-[10px]"
           >
-            Update Profile
+            {loading ? (
+              <HashLoader size={18} color="#ffffff" />
+            ) : (
+              "Update Profile"
+            )}
           </button>
         </div>
       </form>

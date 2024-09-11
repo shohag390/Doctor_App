@@ -2,8 +2,9 @@ import React from "react";
 
 import { FaFacebookF, FaSquareXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import logo from "../../assets/images/logotop.png";
+import logo from "../../assets/image/logo2.png";
 import { AiFillInstagram, AiFillYoutube } from "react-icons/ai";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 const socialLinks = [
   {
@@ -50,7 +51,7 @@ const quickLinks02 = [
   },
   {
     path: "/",
-    display: "Request an appointment",
+    display: "Appointment",
   },
   {
     path: "/",
@@ -65,93 +66,85 @@ const quickLinks02 = [
 const quickLinks03 = [
   {
     path: "/",
-    display: "Donate",
+    display: "mediic@gmail.com",
   },
   {
     path: "/",
-    display: "Contact Us",
+    display: "https://healthcare-sm29.netlify.app",
+  },
+  {
+    path: "/",
+    display: "+1 (767) 234-3658",
   },
 ];
 
 const Footer = () => {
   return (
-    <footer className="pt-10 pb-16 bg-white">
-      <div className="container">
-        <div className="flex justify-between flex-col md:flex-row gap-[30px]">
-          <div>
-            <Link className="flex items-center gap-[2px]" to={"/home"}>
-              <img className="h-[60px]" src={logo} alt="" />
-              <h4 className="text-xl font-extrabold text-irisBlueColor">
-                HealtCare
-              </h4>
-            </Link>
-            <p className="text-[16px] leading-7 font-[400] text-textColor mt-4 ">
-              Copyright &copy; 2024 developed by Md Shohag all right reserved.
-            </p>
-            <div className="flex items-center gap-3 mt-4">
-              {socialLinks.map((link, index) => (
-                <Link
-                  key={index}
-                  to={link.path}
-                  className="w-9 h-9 border border-solid border-[#181a1e] rounded-full flex items-center justify-center group hover:bg-primaryColor hover:border-none"
-                >
-                  {link.icone}
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor">
-              Quick Links
-            </h2>
-            <ul>
-              {quickLinks01.map((item, index) => (
-                <li className="mb-4" key={index}>
-                  <Link
-                    to={item.path}
-                    className="text-[16px] leading-7 font-[400] text-textColor"
-                  >
-                    {item.display}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor">
-              I want to:
-            </h2>
-            <ul>
-              {quickLinks02.map((item, index) => (
-                <li className="mb-4" key={index}>
-                  <Link
-                    to={item.path}
-                    className="text-[16px] leading-7 font-[400] text-textColor"
-                  >
-                    {item.display}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-[20px] leading-[30px] font-[700] mb-6 text-headingColor">
-              Support
-            </h2>
-            <ul>
-              {quickLinks03.map((item, index) => (
-                <li className="mb-4" key={index}>
-                  <Link
-                    to={item.path}
-                    className="text-[16px] leading-7 font-[400] text-textColor"
-                  >
-                    {item.display}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <footer className="bg-[#002570] md:px-[80px] px-[20px] ">
+      <div className="grid grid-cols-2 md:grid-cols-4 md:pt-[50px] border-b-[2px] pt-[25px] pb-[20px] gap-[20px] md:gap-[40px]">
+        <div className="col-span-2 md:col-span-1">
+          <Link to={"./"}>
+            <img className="md:h-[50px] h-[30px]" src={logo} alt="" />
+          </Link>
+          <p className="md:text-[17px] md:font-semibold text-[#E6F1FF] pt-[10px]">
+            Health care, or healthcare, is the improvement of health via the
+            prevention, diagnosis, treatment, amelioration or cure of disease.
+          </p>
         </div>
+
+        <div className="text-[white]">
+          <h4 className="text-[20px] font-bold pb-[15px]">Quick Links</h4>
+          <ul className="leading-[35px]">
+            {quickLinks01?.map((link, index) => (
+              <li key={index} className="flex items-center gap-[10px]">
+                <span>
+                  <MdKeyboardDoubleArrowRight className="text-[#007EFF]" />
+                </span>
+                <Link className="hover:text-[#007EFF]" to={link?.path}>
+                  {link?.display}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="text-[white]">
+          <h4 className="text-[20px] font-bold pb-[15px]">I want to:</h4>
+          <ul className="leading-[35px]">
+            {quickLinks02?.map((link, index) => (
+              <li key={index} className="flex items-center gap-[10px]">
+                <span>
+                  <MdKeyboardDoubleArrowRight className="text-[#007EFF]" />
+                </span>
+                <Link className="hover:text-[#007EFF]" to={link?.path}>
+                  {link?.display}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="text-[white] col-span-2 md:col-span-1">
+          <h4 className="text-[20px] font-bold pb-[15px]">Support</h4>
+          <ul className="leading-[35px]">
+            {quickLinks03?.map((link, index) => (
+              <li key={index} className="flex items-center gap-[10px]">
+                <span>
+                  <MdKeyboardDoubleArrowRight className="text-[#007EFF]" />
+                </span>
+                <Link className="hover:text-[#007EFF]" to={link?.path}>
+                  {link?.display}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div>
+        <p className="text-[white] text-center py-[20px]">
+          Copyright &copy; 2024 Mediic developed by Md Shohag all right
+          reserved.
+        </p>
       </div>
     </footer>
   );

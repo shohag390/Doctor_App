@@ -4,7 +4,7 @@ import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 import { authContext } from "../context/AuthContext.jsx";
 import HashLoader from "react-spinners/HashLoader";
-import image from "../assets/image/login.png";
+import image from "../assets/image/login.jpg";
 
 const Login = () => {
   const [formData, setFormData] = useState({

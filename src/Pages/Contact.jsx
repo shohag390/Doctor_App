@@ -33,8 +33,8 @@ const Contact = () => {
   }
 
   return (
-    <section className="h-full md:px-[80px] px-[20px] md:flex md:justify-end contact_bg w-full bg-[#e6f1ff7c] md:py-[50px]">
-      <div className="w-1/2">
+    <section className="h-full md:px-[80px] py-[25px] px-[20px] md:flex md:justify-end contact_bg w-full bg-[#e6f1ff7c] md:py-[50px]">
+      <div className="md:w-1/2">
         <h4 className="text-[30px] font-bold text-[#002570]">
           Online Support Here
         </h4>

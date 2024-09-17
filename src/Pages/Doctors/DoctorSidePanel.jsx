@@ -1,35 +1,8 @@
 import React from "react";
 import convertTime from "../../utils/convertTime.js";
-import { BASE_URL, token } from "../../config.js";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
-const DoctorSidePanel = ({ ticketPrice, doctorId, timeSlots }) => {
-  const bookingHandler = async () => {
-    try {
-      const res = await fetch(
-        `${BASE_URL}/bookings/checkout-session/${doctorId}`,
-        {
-          method: "post",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message + "Please try again");
-      }
-
-      if (data.session.url) {
-        window.location.href = data.session.url;
-      }
-    } catch (err) {
-      toast.error(err.message);
-    }
-  };
-
+const DoctorSidePanel = ({ ticketPrice, timeSlots, doctorId }) => {
   return (
     <div className="p-[30px] card rounded-[30px]">
       <div className="flex items-center justify-between">
@@ -58,12 +31,11 @@ const DoctorSidePanel = ({ ticketPrice, doctorId, timeSlots }) => {
           ))}
         </ul>
       </div>
-      <button
-        onClick={bookingHandler}
-        className="w-full py-[10px] mt-[5px] rounded-md btnOne"
-      >
-        Book Appointment
-      </button>
+      <Link to={`/checkout/${doctorId}`}>
+        <button className="w-full py-[10px] mt-[5px] rounded-md btnOne">
+          Appointment
+        </button>
+      </Link>
     </div>
   );
 };

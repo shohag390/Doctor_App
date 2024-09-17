@@ -57,69 +57,8 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #002570;
 }
-
-.left_scroll {
-  animation: left linear;
+.bottom_scroll {
+  animation: bottom linear;
   animation-timeline: view();
-  animation-range: entry 0% cover 40%;
-}
-.right_scroll {
-  animation: right linear;
-  animation-timeline: view();
-  animation-range: entry 0% cover 40%;
-}
-
-@keyframes left {
-  from {
-    opacity: 0;
-    transform: translateX(-60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0px);
-  }
-}
-@keyframes right {
-  from {
-    opacity: 0;
-    transform: translateX(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0px);
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .left_scroll {
-    animation: left linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-  }
-  .right_scroll {
-    animation: right linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-  }
-
-  @keyframes left {
-    from {
-      opacity: 1;
-      transform: translateX(0px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0px);
-    }
-  }
-  @keyframes right {
-    from {
-      opacity: 1;
-      transform: translateX(0px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0px);
-    }
-  }
+  animation-range: entry 0% cover 30%;
 }

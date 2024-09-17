@@ -1,7 +1,15 @@
 import React from "react";
 import { formatDate } from "../../utils/formatDate";
+import useFetchData from "../../hooks/useFetchData";
+import { BASE_URL } from "../../config";
 
-const Appointment = ({ appointment }) => {
+const Appointment = ({ appointments }) => {
+  // const {
+  //   data: appointments,
+  //   loading,
+  //   error,
+  // } = useFetchData(`${BASE_URL}/users/appointments/my-appointment`);
+
   return (
     <>
       <table className="hidden w-full text-sm text-left text-gray-500 md:block">
@@ -25,7 +33,7 @@ const Appointment = ({ appointment }) => {
           </tr>
         </thead>
         <tbody>
-          {appointment?.map((item) => (
+          {appointments?.map((item) => (
             <tr key={item?._id}>
               <th
                 scope="row"
@@ -55,9 +63,7 @@ const Appointment = ({ appointment }) => {
                 )}
                 {!item?.isPaid && (
                   <div className="flex items-center">
-                    <div className="h-2.5 w-2.5 rounded-full bg-red-500 mr-2">
-                      Unpaid
-                    </div>
+                    <div className="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>
                     <span>Unpaid</span>
                   </div>
                 )}
@@ -68,8 +74,8 @@ const Appointment = ({ appointment }) => {
           ))}
         </tbody>
       </table>
-      <div className="md:hidden">
-        {appointment?.map((item) => (
+      <div className="grid grid-cols-1 md:hidden gap-[20px]">
+        {appointments?.map((item) => (
           <div key={item?._id} className="card p-[10px]">
             <img
               src={item?.user.photo}
@@ -91,12 +97,10 @@ const Appointment = ({ appointment }) => {
                   </div>
                 )}
                 {!item?.isPaid && (
-                  <p className="flex items-center">
-                    <p className="h-2.5 w-2.5 rounded-full bg-red-500 mr-2">
-                      Unpaid
-                    </p>
+                  <div className="flex items-center">
+                    <div className="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>
                     <span>Unpaid</span>
-                  </p>
+                  </div>
                 )}
               </div>
               <div>

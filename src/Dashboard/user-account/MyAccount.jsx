@@ -30,6 +30,7 @@ const MyAccount = () => {
     loading,
     error,
   } = userGetProfile(`${BASE_URL}/users/profile/me`);
+  console.log(userData.appointments);
 
   const headingLogout = () => {
     dispatch({ type: "LOGOUT" });

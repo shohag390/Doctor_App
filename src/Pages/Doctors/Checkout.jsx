@@ -28,8 +28,6 @@ const Checkout = () => {
     message: "",
   });
 
-  console.log(formData);
-
   useEffect(() => {
     setFormData({
       subject: doctor?.subject || "",

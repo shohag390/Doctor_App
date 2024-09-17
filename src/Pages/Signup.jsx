@@ -21,8 +21,6 @@ const Signup = () => {
     role: "patient",
   });
 
-  console.log(formData);
-
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {

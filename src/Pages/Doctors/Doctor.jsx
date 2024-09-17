@@ -12,7 +12,6 @@ const Doctor = () => {
 
   const handleSearch = () => {
     setQuery(query.trim());
-    console.log("handle search");
   };
 
   useEffect(() => {

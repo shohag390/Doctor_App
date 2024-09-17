@@ -131,7 +131,11 @@ const Dashboard = () => {
               )}
 
               {tab === "appointements" && (
-                <Appointment appointments={data?.appointments} />
+                <Appointment
+                  appointments={data?.appointments}
+                  loading={loading}
+                  error={error}
+                />
               )}
               {tab === "setting" && <Profile doctorData={data} />}
             </div>

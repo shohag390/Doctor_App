@@ -71,6 +71,10 @@ const Doctor = () => {
           <h4 className="md:text-[40px] text-[25px] md:leading-[45px] leading-[30px] text-center font-bold text-[#002570]">
             What our patient say
           </h4>
+          <p className="md:text-[17px] pt-[5px] md:font-semibold text-[gray] text-center">
+            A doctor is a medical professional who has completed the necessary
+            education.
+          </p>
         </div>
         <Testimonial />
       </section>

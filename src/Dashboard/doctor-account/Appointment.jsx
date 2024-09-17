@@ -1,44 +1,24 @@
 import React from "react";
 import { formatDate } from "../../utils/formatDate";
-import useFetchData from "../../hooks/useFetchData";
-import { BASE_URL } from "../../config";
 
-const Appointment = ({ appointments }) => {
-  // const {
-  //   data: appointments,
-  //   loading,
-  //   error,
-  // } = useFetchData(`${BASE_URL}/users/appointments/my-appointment`);
-
+const Appointment = ({ appointments, loading, error }) => {
   return (
     <>
-      <table className="hidden w-full text-sm text-left text-gray-500 md:block">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-          <tr>
-            <th className="px-6 py-3" scope="col">
-              Name
-            </th>
-            <th className="px-6 py-3" scope="col">
-              Gender
-            </th>
-            <th className="px-6 py-3" scope="col">
-              Payment
-            </th>
-            <th className="px-6 py-3" scope="col">
-              Price
-            </th>
-            <th className="px-6 py-3" scope="col">
-              Booked on
-            </th>
-          </tr>
-        </thead>
-        <tbody>
+      <section className="hidden w-full md:flex md:flex-col">
+        <div className="w-full bg-gray-50 md:flex md:justify-between md:items-center md:py-[8px] px-[20px]">
+          <h4 className="w-[40%] flex items-center justify-start">Name</h4>
+          <h4 className="w-[10%] flex items-center justify-center">Gender</h4>
+          <h4 className="w-[15%] flex items-center justify-center">Payment</h4>
+          <h4 className="w-[10%] flex items-center justify-center">Price</h4>
+          <h4 className="w-[25%] flex items-center justify-end">Booked on</h4>
+        </div>
+        <div className="w-full">
           {appointments?.map((item) => (
-            <tr key={item?._id}>
-              <th
-                scope="row"
-                className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap"
-              >
+            <div
+              className="w-full md:flex md:justify-between md:items-center md:py-[8px] px-[20px]"
+              key={item?._id}
+            >
+              <div className="w-[40%] flex items-center justify-start">
                 <img
                   src={item?.user.photo}
                   className="w-10 h-10 rounded-full"
@@ -52,68 +32,91 @@ const Appointment = ({ appointments }) => {
                     {item?.user.email}
                   </div>
                 </div>
-              </th>
-              <td className="px-6 py-4">{item?.user.gender}</td>
-              <td className="px-6 py-4">
-                {item?.isPaid && (
-                  <div className="flex items-center">
-                    <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
-                    <span>Paid</span>
-                  </div>
-                )}
-                {!item?.isPaid && (
-                  <div className="flex items-center">
-                    <div className="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>
-                    <span>Unpaid</span>
-                  </div>
-                )}
-              </td>
-              <td className="px-6 py-4">{item?.ticketPrice}</td>
-              <td className="px-6 py-4">{formatDate(item?.createdAt)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="grid grid-cols-1 md:hidden gap-[20px]">
-        {appointments?.map((item) => (
-          <div key={item?._id} className="card p-[10px]">
-            <img
-              src={item?.user.photo}
-              className="w-full rounded-[20px] h-[250px]"
-              alt=""
-            />
-            <h4 className="font-semibold text-[#002570] text-[20px] pt-[8px]">
-              {item?.user.name}
-            </h4>
-            <p className="text-[gray] font-semibold text-[17px] pb-[5px]">
-              {item?.user.email}
-            </p>
-            <div className="flex items-center justify-between">
-              <div className="text-[gray] font-semibold text-[17px] pb-[5px]">
-                {item?.isPaid && (
-                  <div className="flex items-center">
-                    <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
-                    <span>Paid</span>
-                  </div>
-                )}
-                {!item?.isPaid && (
-                  <div className="flex items-center">
-                    <div className="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>
-                    <span>Unpaid</span>
-                  </div>
-                )}
               </div>
-              <div>
-                <p className="text-[17px] font-semibold text-[#007eff]">
-                  BDT {item?.ticketPrice}
+
+              <p className="w-[10%] flex items-center justify-center">
+                {item?.user.gender}
+              </p>
+
+              <p className="w-[15%] flex items-center justify-center">
+                {item?.isPaid && (
+                  <div className="flex items-center">
+                    <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
+                    <span>Paid</span>
+                  </div>
+                )}
+                {!item?.isPaid && (
+                  <div className="flex items-center">
+                    <div className="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>
+                    <span>Unpaid</span>
+                  </div>
+                )}
+              </p>
+
+              <p className="w-[10%] flex items-center justify-center">
+                {item?.ticketPrice}
+              </p>
+
+              <p className="w-[25%] flex items-center justify-end">
+                {formatDate(item?.createdAt)}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="md:hidden">
+        {!loading && !error && appointments.length === 0 && (
+          <h2 className="text-center text-[#002570] text-[20px] pb-[20px] font-semibold ">
+            Your Appointment!
+          </h2>
+        )}
+
+        {loading && !error && <Loading />}
+        {error && !loading && <Error />}
+        {!loading && !error && (
+          <div className="grid grid-cols-1 gap-[20px]">
+            {appointments?.map((item) => (
+              <div key={item?._id} className="card p-[10px]">
+                <img
+                  src={item?.user.photo}
+                  className="w-full rounded-[20px] h-[250px]"
+                  alt=""
+                />
+                <h4 className="font-semibold text-[#002570] text-[20px] pt-[8px]">
+                  {item?.user.name}
+                </h4>
+                <p className="text-[gray] font-semibold text-[17px] pb-[5px]">
+                  {item?.user.email}
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="text-[gray] font-semibold text-[17px] pb-[5px]">
+                    {item?.isPaid && (
+                      <div className="flex items-center">
+                        <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
+                        <span>Paid</span>
+                      </div>
+                    )}
+                    {!item?.isPaid && (
+                      <div className="flex items-center">
+                        <div className="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>
+                        <span>Unpaid</span>
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <p className="text-[17px] font-semibold text-[#007eff]">
+                      BDT {item?.ticketPrice}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-[#007eff] font-semibold text-[17px] pb-[5px]">
+                  {formatDate(item?.createdAt)}
                 </p>
               </div>
-            </div>
-            <p className="text-[#007eff] font-semibold text-[17px] pb-[5px]">
-              {formatDate(item?.createdAt)}
-            </p>
+            ))}
           </div>
-        ))}
+        )}
       </div>
     </>
   );

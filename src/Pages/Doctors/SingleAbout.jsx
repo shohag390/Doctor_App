@@ -7,8 +7,9 @@ const SingleAbout = ({ doctor }) => {
   return (
     <div>
       <div>
-        <h3 className="text-[20px] leading-[30px] text-[#002570] font-semibold flex items-center gap-2">
-          About of
+        <h3 className="text-[20px] leading-[30px] text-[#002570] font-semibold">
+          <span>About of</span>
+          {""}
           <span className="text-[#007EFF] font-bold text-[24px] leading-9">
             {name}
           </span>

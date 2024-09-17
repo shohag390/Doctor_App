@@ -21,6 +21,8 @@ const Signup = () => {
     role: "patient",
   });
 
+  console.log(formData);
+
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -178,7 +180,7 @@ const Signup = () => {
                 type="submit"
                 className="btnOne w-full py-[10px]"
               >
-                {loading ? <HashLoader size={35} color="#ffffff" /> : "Sign Up"}
+                {loading ? <HashLoader size={18} color="#ffffff" /> : "Sign Up"}
               </button>
             </div>
             <p className="mt-5 text-center md:text-[17px] md:font-semibold text-[gray]">

@@ -41,7 +41,7 @@ const Dashboard = () => {
             {/* Profile Image  */}
             <div>
               <img
-                className="h-[150px] w-[150px] border-2"
+                className="h-[150px] w-full border-2"
                 src={data?.photo}
                 alt=""
               />

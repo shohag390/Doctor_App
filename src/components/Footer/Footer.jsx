@@ -70,7 +70,7 @@ const quickLinks03 = [
   },
   {
     path: "/",
-    display: "https://healthcare-sm29.netlify.app",
+    display: "healthcare-sm29.netlify.app",
   },
   {
     path: "/",
@@ -100,7 +100,10 @@ const Footer = () => {
                 <span>
                   <MdKeyboardDoubleArrowRight className="text-[#007EFF]" />
                 </span>
-                <Link className="hover:text-[#007EFF]" to={link?.path}>
+                <Link
+                  className="hover:text-[#007EFF] md:text-[17px] md:font-semibold text-[white]"
+                  to={link?.path}
+                >
                   {link?.display}
                 </Link>
               </li>
@@ -116,7 +119,10 @@ const Footer = () => {
                 <span>
                   <MdKeyboardDoubleArrowRight className="text-[#007EFF]" />
                 </span>
-                <Link className="hover:text-[#007EFF]" to={link?.path}>
+                <Link
+                  className="hover:text-[#007EFF] md:text-[17px] md:font-semibold text-[white]"
+                  to={link?.path}
+                >
                   {link?.display}
                 </Link>
               </li>
@@ -132,7 +138,10 @@ const Footer = () => {
                 <span>
                   <MdKeyboardDoubleArrowRight className="text-[#007EFF]" />
                 </span>
-                <Link className="hover:text-[#007EFF]" to={link?.path}>
+                <Link
+                  className="hover:text-[#007EFF] md:text-[17px] md:font-semibold text-[white]"
+                  to={link?.path}
+                >
                   {link?.display}
                 </Link>
               </li>
@@ -141,7 +150,7 @@ const Footer = () => {
         </div>
       </div>
       <div>
-        <p className="text-[white] text-center py-[20px]">
+        <p className="text-[white] text-center py-[20px] md:text-[17px] md:font-semibold">
           Copyright &copy; 2024 Mediic developed by Md Shohag all right
           reserved.
         </p>

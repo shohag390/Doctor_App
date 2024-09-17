@@ -21,22 +21,21 @@ const DoctorDetails = () => {
   } = useGetProfile(`${BASE_URL}/doctors/${id}`);
 
   return (
-    <section className="bg-[#E6F1FF] md:py-[50px] py-[25px] md:px-[200px] px-[20px] w-full">
+    <section className="bg-[#E6F1FF] md:py-[50px] py-[25px] md:px-[80px] px-[20px] w-full">
       {loading && !error && <Loading />}
       {error && !loading && <Error />}
-
       {!loading && !error && (
         <div className="grid md:grid-cols-3 gap-[50px]">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-5">
-              <figure className="md:w-[240px] md:h-[250px] h-[200px] w-[200px]">
+            <div className="md:flex md:items-center md:gap-5">
+              <figure className="md:w-[30%] md:h-[250px] md:pb-0 pb-[30px] h-[280px] w-full">
                 <img
                   src={doctor?.photo}
                   alt="image"
-                  className="w-full h-full"
+                  className="w-full h-full md:rounded-none rounded-[30px]"
                 />
               </figure>
-              <div>
+              <div className="md:w-[70%]">
                 <span className="bg-[#0080ff77] text-[white] py-[8px] px-[20px] text-[14px] md:text-[18px] font-semibold rounded-[30px]">
                   {doctor?.specialization}
                 </span>

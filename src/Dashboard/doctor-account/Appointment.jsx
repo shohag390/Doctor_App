@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { formatDate } from "../../utils/formatDate";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Appointment = ({ appointments, loading, error }) => {
+  useEffect(() => {
+    AOS.init({
+      duration: "1000",
+      disable: "mobile",
+    });
+  }, []);
   return (
     <>
-      <section className="hidden w-full md:flex md:flex-col">
+      <section
+        className="hidden w-full overflow-hidden md:flex md:flex-col"
+        data-aos="fade-left"
+      >
         <div className="w-full bg-gray-50 md:flex md:justify-between md:items-center md:py-[8px] px-[20px]">
           <h4 className="w-[40%] flex items-center justify-start">Name</h4>
           <h4 className="w-[10%] flex items-center justify-center">Gender</h4>

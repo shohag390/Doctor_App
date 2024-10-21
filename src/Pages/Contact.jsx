@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "@formspree/react";
 import { IoMdCloudDone } from "react-icons/io";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Contact = () => {
   const [state, handleSubmit] = useForm("xnnarwpn");
+  useEffect(() => {
+    AOS.init({
+      duration: "1000",
+      disable: "mobile",
+    });
+  }, []);
 
   if (state.succeeded) {
     return (
@@ -49,6 +57,7 @@ const Contact = () => {
               name="name"
               placeholder="Your Name*"
               className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+              data-aos="flip-up"
             />
 
             <input
@@ -56,6 +65,7 @@ const Contact = () => {
               name="email"
               placeholder="Your Email*"
               className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+              data-aos="flip-up"
             />
           </div>
           <div className="flex items-center gap-[20px]">
@@ -64,6 +74,7 @@ const Contact = () => {
               name="subject"
               placeholder="Subject*"
               className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+              data-aos="flip-up"
             />
 
             <input
@@ -71,6 +82,7 @@ const Contact = () => {
               name="phone"
               placeholder="Phone*"
               className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+              data-aos="flip-up"
             />
           </div>
           <div className="">
@@ -79,9 +91,14 @@ const Contact = () => {
               name="message"
               placeholder="Subject*"
               className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+              data-aos="flip-up"
             />
           </div>
-          <button type="submit" className="btnOne w-[200px] py-[10px]">
+          <button
+            type="submit"
+            className="btnOne w-[200px] py-[10px]"
+            data-aos="flip-up"
+          >
             Send Now
           </button>
         </form>

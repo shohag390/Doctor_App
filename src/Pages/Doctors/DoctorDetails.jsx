@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import starIcone from "../../assets/images/Star.png";
 import DoctorFeedback from "./DoctorFeedback";
 // import DoctorSidePanel from "./DoctorSidePanel";
@@ -9,6 +9,8 @@ import { BASE_URL } from "../../config";
 import useGetProfile from "../../hooks/useFetchData";
 import SingleAbout from "./SingleAbout";
 import DoctorSidePanel from "./DoctorSidePanel";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const DoctorDetails = () => {
   const { id } = useParams();
@@ -20,13 +22,20 @@ const DoctorDetails = () => {
     error,
   } = useGetProfile(`${BASE_URL}/doctors/${id}`);
 
+  useEffect(() => {
+    AOS.init({
+      duration: "1000",
+      disable: "mobile",
+    });
+  }, []);
+
   return (
     <section className="bg-[#E6F1FF] md:py-[50px] py-[25px] md:px-[80px] px-[20px] w-full">
       {loading && !error && <Loading />}
       {error && !loading && <Error />}
       {!loading && !error && (
         <div className="grid md:grid-cols-3 gap-[50px]">
-          <div className="md:col-span-2">
+          <div className="md:col-span-2" data-aos="fade-right">
             <div className="md:flex md:items-center md:gap-5">
               <figure className="md:w-[30%] md:h-[250px] md:pb-0 pb-[30px] h-[280px] w-full">
                 <img
@@ -90,7 +99,7 @@ const DoctorDetails = () => {
             </div>
           </div>
 
-          <div>
+          <div data-aos="fade-left">
             <DoctorSidePanel
               doctorId={doctor?._id}
               ticketPrice={doctor?.ticketPrice}

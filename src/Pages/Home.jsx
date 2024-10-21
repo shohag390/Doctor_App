@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import image from "../assets/image/hero-img.png";
 import counter from "../assets/image/counter-img.png";
 import serviceOne from "../assets/images/icon01.png";
@@ -15,6 +15,8 @@ import FaqList from "../components/Faq/FaqList";
 import Testimonial from "../components/Testimonial/Testimonial";
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const serviceArr = [
   {
@@ -36,11 +38,17 @@ const serviceArr = [
 
 const Home = () => {
   const [counterOn, setCounterOn] = useState(false);
+  useEffect(() => {
+    AOS.init({
+      duration: "1000",
+      disable: "mobile",
+    });
+  }, []);
   return (
     <>
       {/* --------HERO SECTION HERE-------- */}
-      <section className="md:h-[90vh] md:py-0 py-[35px] w-full banner md:px-[80px] px-[20px] md:flex md:items-center md:justify-between">
-        <div className="md:w-[50%]">
+      <section className="md:h-[90vh] md:py-0 py-[35px] w-full banner md:px-[80px] px-[20px] md:flex md:items-center md:justify-between overflow-hidden">
+        <div className="md:w-[50%]" data-aos="fade-right">
           <h2 className="md:text-[50px] text-[30px] font-bold md:leading-[60px] leading-[40px] text-white md:pb-[20px] pb-[15px]">
             We help patients live a healthy longer life .
           </h2>
@@ -56,19 +64,28 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className="md:w-[50%] md:flex md:justify-end hidden">
+        <div
+          className="md:w-[50%] md:flex md:justify-end hidden"
+          data-aos="fade-left"
+        >
           <img className="md:h-[90vh] md:pt-[40px]" src={image} alt="" />
         </div>
       </section>
       {/* --------HERO SECTION CLOSE-------- */}
-      <section className="md:px-[80px] px-[20px] md:h-[30vh] w-full client_happy md:flex md:items-center  md:justify-between gap-[100px] md:py-0 py-[25px]">
-        <div className="md:w-[50%] md:flex overflow-hidden hidden md:items-center md:gap-[30px]">
+      <section className="md:px-[80px] px-[20px] md:h-[30vh] w-full client_happy md:flex md:items-center  md:justify-between gap-[100px] md:py-0 py-[25px] overflow-hidden">
+        <div
+          className="md:w-[50%] md:flex overflow-hidden hidden md:items-center md:gap-[30px]"
+          data-aos="fade-right"
+        >
           <img className="md:h-[120px]" src={counter} alt="" />
           <h6 className="md:text-[25px] font-bold text-[white]">
             Medical Achivement Health Protection
           </h6>
         </div>
-        <div className="md:w-[50%] w-full flex items-center justify-between">
+        <div
+          className="md:w-[50%] w-full flex items-center justify-between"
+          data-aos="fade-left"
+        >
           <ScrollTrigger
             onEnter={() => setCounterOn(true)}
             onExit={() => setCounterOn(false)}
@@ -121,7 +138,7 @@ const Home = () => {
       </section>
 
       {/* --------LOCATION SECTION-------- */}
-      <section className="md:px-[80px] px-[20px] md:py-[50px] py-[25px] bg-[#E6F1FF]">
+      <section className="md:px-[80px] px-[20px] md:py-[50px] py-[25px] bg-[#E6F1FF] overflow-hidden">
         <div className="md:px-[500px] px-[60px]">
           <h4 className="md:text-[40px] text-[25px] md:leading-[45px] leading-[30px] text-center font-bold text-[#002570]">
             Providing the best medical services
@@ -137,6 +154,7 @@ const Home = () => {
             <div
               key={index}
               className="border-[2px] border-[white] p-[40px] duration-500 card"
+              data-aos="zoom-in-up"
             >
               <div className="flex items-center justify-center">
                 <img className="h-[100px]" src={card.image} alt="" />
@@ -167,7 +185,7 @@ const Home = () => {
       {/* --------ABOUT SECTION CLOSE------- */}
 
       {/* --------SERVICES SECTION HERE--------- */}
-      <section className="md:pt-[50px] bg-[#E6F1FF]">
+      <section className="md:pt-[50px] bg-[#E6F1FF] overflow-hidden">
         <div className="md:px-[500px]  px-[60px] ">
           <h4 className="md:text-[40px] text-[25px] md:leading-[45px] leading-[30px] text-center font-bold text-[#002570]">
             Our medical services
@@ -182,8 +200,8 @@ const Home = () => {
       {/* --------SERVICES SECTION CLOSE--------- */}
 
       {/* -----------FEATURE SECTION HERE--------- */}
-      <section className="md:px-[80px] px-[20px] md:py-[50px] py-[25px] bg_tast bg-[#E6F1FF] md:flex md:justify-between md:items-center w-full">
-        <div className="md:w-[50%] md:pb-0 pb-[30px]">
+      <section className="md:px-[80px] px-[20px] md:py-[50px] py-[25px] bg_tast bg-[#E6F1FF] md:flex md:justify-between md:items-center w-full overflow-hidden">
+        <div className="md:w-[50%] md:pb-0 pb-[30px]" data-aos="fade-right">
           <h4 className="md:text-[40px] text-[25px] md:leading-[45px] leading-[30px] font-bold text-[#002570] pb-[18px]">
             Get virtual Treatment
           </h4>
@@ -206,7 +224,7 @@ const Home = () => {
           </Link>
         </div>
 
-        <div className="md:w-[50%]">
+        <div className="md:w-[50%]" data-aos="fade-left">
           <img className="rounded-[30px] w-full" src={therapi} alt="image" />
         </div>
       </section>
@@ -214,7 +232,7 @@ const Home = () => {
 
       {/* ------OUR GREAT DOCTOR HERE--------- */}
       <section className="md:pt-[50px] pt-[20px] bg-[#E6F1FF]">
-        <div className="md:px-[500px] px-[60px]">
+        <div className="md:px-[500px] px-[60px] overflow-hidden">
           <h4 className="md:text-[40px] text-[25px] md:leading-[45px] leading-[30px] text-center font-bold text-[#002570]">
             Our great doctor
           </h4>
@@ -228,8 +246,8 @@ const Home = () => {
       {/* ------OUR GREAT DOCTOR CLOSE--------- */}
 
       {/* --------FAQ SECTION--------- */}
-      <section className="md:flex md:items-center md:justify-between md:px-[80px] px-[20px] py-[25px] md:py-[50px] bg-[#E6F1FF] bg_tast md:gap-[50px]">
-        <div className="md:w-1/2 md:pb-0 pb-[25px] ">
+      <section className="md:flex md:items-center md:justify-between md:px-[80px] px-[20px] py-[25px] md:py-[50px] bg-[#E6F1FF] bg_tast md:gap-[50px] overflow-hidden">
+        <div className="md:w-1/2 md:pb-0 pb-[25px] " data-aos="fade-right">
           <img
             className="rounded-[30px] md:h-[400px] w-full"
             src={faqImg}
@@ -237,7 +255,7 @@ const Home = () => {
           />
         </div>
 
-        <div className="md:w-1/2">
+        <div className="md:w-1/2" data-aos="fade-left">
           <h4 className="md:text-[40px] text-[25px] md:leading-[45px] leading-[30px] font-bold text-[#002570]">
             Most questions by our beloved patients
           </h4>

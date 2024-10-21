@@ -4,6 +4,8 @@ import uploadImageToCloudinary from "../../utils/uploadCloudinary";
 import { BASE_URL, token } from "../../config";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Profile = ({ doctorData }) => {
   const [loading, setLoading] = useState(false);
@@ -162,6 +164,13 @@ const Profile = ({ doctorData }) => {
     e.preventDefault();
     deleteItem("timeSlots", index);
   };
+
+  useEffect(() => {
+    AOS.init({
+      duration: "1000",
+      disable: "mobile",
+    });
+  }, []);
 
   return (
     <div>

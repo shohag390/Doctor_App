@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ServicesCard = ({ item, index }) => {
   const { name, desc, bgColor, textColor } = item;
+  useEffect(() => {
+    AOS.init({
+      duration: "1000",
+      disable: "mobile",
+    });
+  }, []);
   return (
-    <div className="border-2 border-[white] card p-[20px]">
+    <div
+      className="border-2 border-[white] card p-[20px]"
+      data-aos="zoom-in-up"
+    >
       <h2 className="md:text-[22px] text-[#002570] font-bold">{name}</h2>
       <p className="md:text-[17px] capitalize text-[gray] font-semibold pt-[4px]">
         {desc}

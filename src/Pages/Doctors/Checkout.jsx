@@ -9,6 +9,8 @@ import HashLoader from "react-spinners/HashLoader";
 import { toast } from "react-toastify";
 import Error from "../../components/Error/Error";
 import Loading from "../../components/Loader/Loading";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Checkout = () => {
   const { id } = useParams();
@@ -74,7 +76,12 @@ const Checkout = () => {
       setLoad(false);
     }
   };
-
+  useEffect(() => {
+    AOS.init({
+      duration: "1000",
+      disable: "mobile",
+    });
+  }, []);
   return (
     <section className="md:h-[90vh] md:py-0 py-[25px] md:px-[80px] px-[20px] bg-[#E6F1FF] md:flex md:items-center md:justify-center w-full">
       {loading && !error && <Loading />}
@@ -125,6 +132,7 @@ const Checkout = () => {
                   name="subject"
                   value={formData.subject || ""}
                   onChange={handleInputChange}
+                  data-aos="flip-up"
                 />
               </div>
 
@@ -139,6 +147,7 @@ const Checkout = () => {
                   readOnly
                   value={formData?.ticketPrice || ""}
                   onChange={handleInputChange}
+                  data-aos="flip-up"
                 />
               </div>
 
@@ -153,6 +162,7 @@ const Checkout = () => {
                       onChange={handleInputChange}
                       value={formData.date || ""}
                       className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+                      data-aos="flip-up"
                     >
                       <option className="capitalize" value="">
                         select
@@ -178,6 +188,7 @@ const Checkout = () => {
                     value={formData.time || ""}
                     onChange={handleInputChange}
                     className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+                    data-aos="flip-up"
                   />
                 </div>
               </div>
@@ -191,6 +202,7 @@ const Checkout = () => {
                   value={formData.message || ""}
                   onChange={handleInputChange}
                   placeholder="message"
+                  data-aos="flip-up"
                 ></textarea>
               </div>
               <div className="pt-[20px]">
@@ -198,6 +210,7 @@ const Checkout = () => {
                   type="submit"
                   disabled={loading && true}
                   className="btnOne w-full py-[10px]"
+                  data-aos="flip-up"
                 >
                   {load ? (
                     <HashLoader size={18} color="#ffffff" />

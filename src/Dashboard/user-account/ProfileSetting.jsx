@@ -5,6 +5,8 @@ import uploadImageToCloudinary from "../../utils/uploadCloudinary";
 import { BASE_URL, token } from "../../config";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ProfileSetting = ({ user }) => {
   const [selectFile, setSelectFile] = useState(null);
@@ -74,6 +76,13 @@ const ProfileSetting = ({ user }) => {
     }
   };
 
+  useEffect(() => {
+    AOS.init({
+      duration: "1000",
+      disable: "mobile",
+    });
+  }, []);
+
   return (
     <div className="mt-[20px]">
       <form onSubmit={submitHandler}>
@@ -85,6 +94,7 @@ const ProfileSetting = ({ user }) => {
             value={formData.name || ""}
             onChange={handleInputChange}
             className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+            data-aos="flip-up"
           />
         </div>
         <div className="mb-[15px]">
@@ -97,6 +107,7 @@ const ProfileSetting = ({ user }) => {
             aria-readonly
             readOnly
             className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+            data-aos="flip-up"
           />
         </div>
         <div className="mb-[15px]">
@@ -107,6 +118,7 @@ const ProfileSetting = ({ user }) => {
             value={formData.password || ""}
             onChange={handleInputChange}
             className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+            data-aos="flip-up"
           />
         </div>
         <div className="mb-[15px]">
@@ -117,6 +129,7 @@ const ProfileSetting = ({ user }) => {
             value={formData.bloodType || ""}
             onChange={handleInputChange}
             className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+            data-aos="flip-up"
           />
         </div>
 
@@ -128,6 +141,7 @@ const ProfileSetting = ({ user }) => {
               value={formData.gender || ""}
               onChange={handleInputChange}
               className="py-[10px] rounded-[30px] border-[1px] border-[#002570] focus:outline-none px-[20px] w-full"
+              data-aos="flip-up"
             >
               <option value="">Select</option>
               <option value="male">Male</option>
@@ -159,6 +173,7 @@ const ProfileSetting = ({ user }) => {
             <label
               htmlFor="customFile"
               className="absolute top-0 left-0 w-full h-full flex items-center px-[0.75rem] py-[0.375rem] text-[15px] leading-6 overflow-hidden bg-[#0066ff46] text-headingColor font-semibold rounded-lg truncate cursor-pointer"
+              data-aos="flip-up"
             >
               {selectFile ? selectFile.name : "Upload Photo"}
             </label>
@@ -170,6 +185,7 @@ const ProfileSetting = ({ user }) => {
             disabled={loading && true}
             type="submit"
             className="btnOne w-full py-[10px]"
+            data-aos="flip-up"
           >
             {loading ? <HashLoader size={18} color="#ffffff" /> : "Update"}
           </button>

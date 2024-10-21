@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loader from "../../components/Loader/Loading";
 import { BASE_URL } from "../../config";
 import useGetProfile from "../../hooks/useFetchData";
@@ -15,6 +15,8 @@ import { IoSettings } from "react-icons/io5";
 import { SlEnvolopeLetter } from "react-icons/sl";
 import { FiLogOut } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Dashboard = () => {
   const { data, loading, error } = useGetProfile(
@@ -30,9 +32,15 @@ const Dashboard = () => {
   };
 
   const [tab, setTab] = useState("overview");
+  useEffect(() => {
+    AOS.init({
+      duration: "1000",
+      disable: "mobile",
+    });
+  }, []);
 
   return (
-    <section className="md:h-[90vh] md:py-0 py-[25px] md:px-[80px] px-[20px] bg-[#E6F1FF] md:flex md:items-center md:justify-center w-full">
+    <section className="md:h-[90vh] md:py-0 py-[25px] md:px-[80px] px-[20px] bg-[#E6F1FF] md:flex md:items-center md:justify-center w-full overflow-hidden">
       {loading && !error && <Loader />}
       {error && !loading && <Error errMessage={error} />}
       {!loading && !error && (
@@ -93,7 +101,7 @@ const Dashboard = () => {
           <div className="md:h-[80vh] md:w-[70%] card p-[20px] md:p-[30px] md:overflow-hidden">
             <div className="w-full md:pr-[20px] md:py-[2px] md:pl-[2px] md:mb-[30px] md:h-[70vh] md:overflow-y-scroll">
               {tab === "overview" && (
-                <div>
+                <div data-aos="fade-left">
                   <div className="gap-4 mb-10 md:flex md:items-center">
                     <figure className="md:h-[200px] md:w-[250px] h-[250px] w-full md:pb-0 pb-[20px]">
                       <img className="w-full h-full" src={data?.photo} alt="" />

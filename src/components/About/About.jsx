@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import doctorImage from "../../assets/image/about.jpg";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const About = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: "1000",
+      disable: "mobile",
+    });
+  }, []);
   return (
-    <section className="md:px-[80px] bg_tast px-[20px] md:py-[50px] py-[25px] bg-[#E6F1FF] md:flex md:justify-between md:items-center gap-[60px]">
+    <section className="md:px-[80px] bg_tast px-[20px] md:py-[50px] py-[25px] bg-[#E6F1FF] md:flex md:justify-between md:items-center gap-[60px] overflow-hidden">
       {/* --------ABOUT IMAGE---------- */}
-      <div className="md:w-[50%] md:pb-0 pb-[25px]">
+      <div className="md:w-[50%] md:pb-0 pb-[25px]" data-aos="fade-right">
         <img
           className="w-full md:h-[450px] rounded-[30px]"
           src={doctorImage}
@@ -15,7 +23,7 @@ const About = () => {
       </div>
       {/* ----------ABOUT IMAGE CLOSE--------- */}
 
-      <div className="md:w-[50%]">
+      <div className="md:w-[50%]" data-aos="fade-left">
         <h4 className="md:text-[40px] text-[25px] md:leading-[45px] leading-[30px] font-bold text-[#002570] pb-[18px]">
           Proud to be one of the nations best
         </h4>

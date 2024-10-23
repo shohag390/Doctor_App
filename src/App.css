@@ -7,7 +7,8 @@
   scroll-behavior: smooth;
 }
 
-body {
+html {
+  scroll-behavior: smooth;
   font-family: "Manrope", sans-serif;
 }
 
@@ -61,4 +62,18 @@ body {
   animation: bottom linear;
   animation-timeline: view();
   animation-range: entry 0% cover 30%;
+}
+
+.animation_arrow {
+  animation: animate 1s infinite alternate-reverse;
+  box-shadow: 0px 0px 2px #ffffff;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
 }

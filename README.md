@@ -1,8 +1,60 @@
-# React + Vite
+# 🏥 Doctor_App – HealthCare Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[🌐 Live Site](https://health-sm29.netlify.app/) • [💻 GitHub Repository](https://github.com/shohag390/Doctor_App)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Overview
+
+**Doctor_App** is a modern and responsive healthcare service website built with React. It provides a seamless user experience for patients to explore doctors, services, and book appointments. The app features animated stats, smooth scroll interactions, and an integrated contact form—making it ideal for clinics, hospitals, or telemedicine platforms.
+
+---
+
+## 🧰 Tech Stack
+
+- **React** – Core library for building UI
+- **React Router DOM** – For client-side navigation
+- **AOS (Animate On Scroll)** – Scroll animations
+- **Swiper.js** – Sliders for doctor profiles or testimonials
+- **React CountUp** – Animated number counters for stats
+- **React Scroll Trigger** – Animation triggers on scroll
+- **React Toastify** – Toast notifications for user feedback
+- **React Spinners** – Loading indicators
+- **React Icons** – Icon set for UI elements
+- **Formspree** – Handles contact form submissions
+- **Stripe** – Stripe payment SDK integration (future expansion)
+
+---
+
+## 🎯 Features
+
+- 🧑‍⚕️ Doctor listings and service overviews
+- 📱 Fully responsive and mobile-friendly design
+- 📊 Animated statistics with `react-countup`
+- ✨ Smooth scroll-triggered animations
+- 📨 Contact form with Formspree integration
+- 🔔 Toast notifications for user actions
+- 💳 Stripe SDK ready for appointment payment handling
+- 🔁 Swiper sliders for doctors/testimonials
+
+---
+
+## 📸 Screenshots
+
+![Doctor_App Preview](https://health-sm29.netlify.app/preview.jpg) <!-- Replace with real screenshot if available -->
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v16+)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/shohag390/Doctor_App.git
+   cd Doctor_App
